@@ -1,0 +1,1 @@
+db.myFirstMDB.update({first_name:"john"},{$set:{hair_colour:"green"}});
