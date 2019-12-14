@@ -10,6 +10,8 @@ app.secret_key = "some_secret"
 def index():
     return render_template("index.html")
 
+"""
+
 @app.route('/about')
 def about():
     data = []
@@ -40,7 +42,10 @@ def contact():
 def careers():
     return render_template("careers.html", page_title="Careers")
 
+"""
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP', '0.0.0.0'),
             port = int(os.environ.get('PORT', '5000')),
             debug=True)
+
