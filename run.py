@@ -1,9 +1,15 @@
 import os
 import json
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, redirect, request, url_for, flash
+from flask_pymongo import PyMongo
+from bson.objectid import ObjectId 
 
 app = Flask(__name__)
 app.secret_key = "some_secret"
+app.config["MONGO_DBNAME"] = 'task_manager'
+app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost')
+
+mongo = PyMongo(app)
 
 
 @app.route("/", methods=["GET", "POST"])
