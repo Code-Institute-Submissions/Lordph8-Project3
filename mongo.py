@@ -1,7 +1,7 @@
 import pymongo
 import os
 
-MONGODB_URI = "mongodb+srv://root:7H3_4r73575@myfirstcluster-qpzww.mongodb.net/myFirstMDB?retryWrites=true&w=majority"
+MONGODB_URI = "mongodb+srv://root:Thisisarandompassword@myfirstcluster-qpzww.mongodb.net/mytheRecipe?retryWrites=true&w=majority"
 DBS_NAME = "myTestDB"
 COLLECTION_NAME = "myFirstMDB"
 
