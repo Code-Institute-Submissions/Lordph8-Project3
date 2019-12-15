@@ -1,47 +1,100 @@
- {% extends 'base.html' %}   
- {% block content %}  
+{% extends 'base.html' %}   
+{% block content %}  
+
+<!-- Search Section -->
+    <section id="search" class="search-section text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2 class="text-white mb-4">Search Recipie Database</h2>
+            <p class="text-white-50">Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on
+              <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
+              <form method= "POST" name="sentMessage" id="contactForm" novalidate>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Name</label>
+                        <input type="text" class="form-control" placeholder="search" name="search" id="search" required data-validation-required-message="Search">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>    
+                <div id="success"></div>
+                    <div class="form-group">
+                        <button href="#results" type="submit" class="btn btn-primary js-scroll-trigger" id="sendMessageButton">Get Results</button>
+                    </div>
+                </div>
+              </form>
+            </div>
+          </div>
+              <a href="#results" class="btn btn-primary js-scroll-trigger">Get Results</a>  
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Results Section -->
+    <section id="results" class="projects-section bg-light">
+      <div class="container">
 
        <!-- Result 1 -->
        {% for recipe in search %}
+       {% if loop.index %2 != 0 %}
       <div class="row justify-content-center no-gutters">
           <div class="col-lg-6">
-            <img class="img-fluid" src="{{ recipe.image }}" alt="{{ recipe.name }}" />
+            <div class="bg-black text-center h-100 project picture-center">
+                <img class="img-fluid" src="{{ recipe.image }}" alt="{{ recipe.name }}" />
+            </div>
           </div>
           <div class="col-lg-6 order-lg-first">
             <div class="bg-black text-center h-100 project">
               <div class="d-flex h-100">
-                <div class="project-text w-100 my-auto text-center text-lg-right">
+                <div class="project-text w-100 my-auto text-center text-lg-left">
                   <h4 class="text-white">{{ recipe.name }}</h4>
                   <br>
                   <h5 class="text-white">Ingredients</h5>
-                  <p class="mb-0 text-white-50">{{ recipe.ingredients }}</p>
+                  {% for ingredient in recipe.ingredients.split(",") %} 
+                  <p class="mb-0 text-white-50">
+                  {{ ingredient }}</p>
+                  {% endfor %}
                   <br>
                   <h5 class="text-white">Directions</h5>
                   <p class="mb-0 text-white-50">{{ recipe.directions }}</p>
-                  <hr class="d-none d-lg-block mb-0 mr-0">
+                  <hr class="d-none d-lg-block mb-0 mc-0">
                 </div>
               </div>
             </div>
           </div>
         </div>
-  
+        {% else %}
         <!-- Result 2 -->
         <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
           <div class="col-lg-6">
-            <img class="img-fluid" src="{{url_for('static', filename='img/Lunch.jpg')}}" alt="Lunch"/>
+            <div class="bg-black text-center h-100 project picture-center">
+                <img class="img-fluid" src="{{ recipe.image }}" alt="{{ recipe.name }}" />
+            </div>
           </div>
           <div class="col-lg-6">
             <div class="bg-black text-center h-100 project">
               <div class="d-flex h-100">
                 <div class="project-text w-100 my-auto text-center text-lg-left">
                   <h4 class="text-white">{{ recipe.name }}</h4>
-                  <p class="mb-0 text-white-50">An example of where you can put an image of a project, or anything else, along with a description.</p>
-                  <hr class="d-none d-lg-block mb-0 ml-0">
+                  <br>
+                  <h5 class="text-white">Ingredients</h5>
+                  {% for ingredient in recipe.ingredients.split(",") %} 
+                  <p class="mb-0 text-white-50">
+                  {{ ingredient }}</p>
+                  {% endfor %}
+                  <br>
+                  <h5 class="text-white">Directions</h5>
+                  <p class="mb-0 text-white-50">{{ recipe.directions }}</p>
+                  <hr class="d-none d-lg-block mb-0 mc-0">
                 </div>
               </div>
             </div>
           </div>
         </div>
+    </div>
+ </section>
+        {% endif %}
         {% endfor %}
 {% endblock %}  
 

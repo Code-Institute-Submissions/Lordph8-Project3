@@ -202,6 +202,11 @@
   font-size: 90%;
 }
 
+.picture-center {
+    vertical-align: middle;
+    align-items: center;
+}
+
 @media (min-width: 992px) {
   .projects-section .project-text {
     padding: 5rem;
@@ -223,7 +228,7 @@
   background-size: cover;
 }
 
-.signup-section .form-inline input {
+.signup-secorm-inline input {
   box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
   padding: 1.25rem 2rem;
   height: auto;

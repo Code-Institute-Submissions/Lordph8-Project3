@@ -12,18 +12,21 @@ app.config["MONGO_URI"] = "mongodb+srv://root:Thisisarandompassword@myfirstclust
 
 mongo = PyMongo(app)
 
-
 @app.route("/", methods=["GET", "POST"])
 def index():
-    
-    return render_template("index.html", search=mongo.db.Recipes.find())
+
+    if request.method == 'POST':
+        search = request.form['search']#form input on initial position
+        
+        return render_template("index.html", search=mongo.db.Recipes.find({ "name": search }))
+
 
 @app.route('/results')
 def get_recipes():
-    return render_template("index.html", search=mongo.db.Recipes.find())
-    if search > "":
-        for i in search.ingredients:
-            i.replace(",", "<br>")
+    if request.method == 'POST':
+        search = request.form['search']#form input on initial position
+        
+        return render_template("index.html", search=mongo.db.Recipes.find({ "name": search }))
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP', '0.0.0.0'),
