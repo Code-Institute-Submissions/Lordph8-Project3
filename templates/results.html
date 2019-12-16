@@ -1,0 +1,81 @@
+{% extends 'base.html' %}   
+{% block content %}  
+
+    <!-- Results Section -->
+    <section id="section" class="projects-section bg-light">
+
+
+    {% if section %}
+        <script>
+            $(function() {
+            $("html, body").animate({ scrollTop: $("#{{ section }}").offset().top }, 500);
+            });
+        </script>
+    {% endif %}
+    
+      <div class="container">
+
+       <!-- Result 1 -->
+       {% for recipe in search %}
+       {% if loop.index %2 != 0 %}
+      <div class="row justify-content-center no-gutters">
+          <div class="col-lg-6">
+            <div class="bg-black text-center h-100 project picture-center">
+                <img class="img-fluid" src="{{ recipe.image }}" alt="{{ recipe.name }}" />
+            </div>
+          </div>
+          <div class="col-lg-6 order-lg-first">
+            <div class="bg-black text-center h-100 project">
+              <div class="d-flex h-100">
+                <div class="project-text w-100 my-auto text-center text-lg-left">
+                  <h4 class="text-white">{{ recipe.name }}</h4>
+                  <br>
+                  <h5 class="text-white">Ingredients</h5>
+                  {% for ingredient in recipe.ingredients.split(",") %} 
+                  <p class="mb-0 text-white-50">
+                  {{ ingredient }}</p>
+                  {% endfor %}
+                  <br>
+                  <h5 class="text-white">Directions</h5>
+                  <p class="mb-0 text-white-50">{{ recipe.directions }}</p>
+                  <hr class="d-none d-lg-block mb-0 mc-0">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% else %}
+        <!-- Result 2 -->
+        <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+          <div class="col-lg-6">
+            <div class="bg-black text-center h-100 project picture-center">
+                <img class="img-fluid" src="{{ recipe.image }}" alt="{{ recipe.name }}" />
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="bg-black text-center h-100 project">
+              <div class="d-flex h-100">
+                <div class="project-text w-100 my-auto text-center text-lg-left">
+                  <h4 class="text-white">{{ recipe.name }}</h4>
+                  <br>
+                  <h5 class="text-white">Ingredients</h5>
+                  {% for ingredient in recipe.ingredients.split(",") %} 
+                  <p class="mb-0 text-white-50">
+                  {{ ingredient }}</p>
+                  {% endfor %}
+                  <br>
+                  <h5 class="text-white">Directions</h5>
+                  <p class="mb-0 text-white-50">{{ recipe.directions }}</p>
+                  <hr class="d-none d-lg-block mb-0 mc-0">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+ </section>
+
+ 
+        {% endif %}
+        {% endfor %}
+{% endblock %}  

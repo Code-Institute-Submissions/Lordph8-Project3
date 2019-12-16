@@ -12,23 +12,55 @@ app.config["MONGO_URI"] = "mongodb+srv://root:Thisisarandompassword@myfirstclust
 
 mongo = PyMongo(app)
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")
 def index():
 
-    if request.method == 'POST':
-        search = request.form['search']#form input on initial position
-        
-        return render_template("index.html", search=mongo.db.Recipes.find({ "name": search }))
+     return render_template("index.html")
+
+@app.route("/NoResults")
+def noresult():
+
+     return render_template("noresult.html")
 
 
-@app.route('/results')
-def get_recipes():
+@app.route("/results", methods=["GET", "POST"])
+def results():
     if request.method == 'POST':
-        search = request.form['search']#form input on initial position
+        searching = request.form['search']
+        if searching > "":
         
-        return render_template("index.html", search=mongo.db.Recipes.find({ "name": search }))
+            return render_template("results.html", section="section", search=mongo.db.Recipes.find({"name": searching}))
+
+        else:
+            return render_template("noresult.html")
+
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP', '0.0.0.0'),
             port = int(os.environ.get('PORT', '5000')),
             debug=True)
+
+"""
+@app.route("/", methods=["GET", "POST"])
+def index():
+
+    if request.method == 'POST':
+        search = request.form['search']
+        if request.method == 'POST':
+            return search_results(search)
+        return render_template('index.html', form=search)
+
+@app.route('/results')
+def search_results(search):
+    results = []
+    search_string = search.data['search']
+    if search.data['search'] == '':
+        qry = mongo.db.Recipesy(name)
+        results = qry.all()
+    if not results:
+        flash('No results found!')
+        return redirect('/')
+    else:
+        # display results
+        return render_template('results.html', results=results) 
+"""

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}   
+{% block content %}  
+  
+    <!-- Results Section -->
+  <section id="results" class="projects-section bg-light">
+    <div class="container">
+
+      <!-- Result 1 -->
+      <div class="row justify-content-center no-gutters">
+        <div class="col-lg-6">
+           <img class="img-fluid" src="{{url_for('static', filename='img/NoFood.jpg')}}" alt="Breakfast"/>
+        </div>
+        <div class="col-lg-6 order-lg-first">
+          <div class="bg-black text-center h-100 project">
+            <div class="d-flex h-100">
+              <div class="project-text w-100 my-auto text-center text-lg-left">
+                <h4 class="text-white">Sorry!</h4>
+                <p class="mb-0 text-white-50">Your search has yeilded no results</p>
+                <hr class="d-none d-lg-block mb-0 mc-0">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  {% endblock %}  
