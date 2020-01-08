@@ -1,7 +1,8 @@
 import os
 import json
 from flask import Flask, render_template, redirect, request, url_for, flash
-from flask_pymongo import PyMongo
+from flask_pymongo import PyMongo, pymongo
+
 from bson.objectid import ObjectId 
 
 app = Flask(__name__)
@@ -12,27 +13,51 @@ app.config["MONGO_URI"] = "mongodb+srv://root:Thisisarandompassword@myfirstclust
 
 mongo = PyMongo(app)
 
-@app.route("/")
+@app.route("/") 
 def index():
 
      return render_template("index.html")
 
 @app.route("/NoResults")
-def noresult():
+def noresult(): 
 
      return render_template("noresult.html")
 
 
 @app.route("/results", methods=["GET", "POST"])
+
+
 def results():
+
+    collection = mongo.db.Recipes
     if request.method == 'POST':
         searching = request.form['search']
         if searching > "":
-        
-            return render_template("results.html", section="section", search=mongo.db.Recipes.find({"name": searching}))
 
+            collection.create_index( { "$**": pymongo.TEXT } )
+                                                       
+            return render_template("results.html", search = collection.find({'$text' : {'$search' : searching }}))          
+            
         else:
             return render_template("noresult.html")
+
+"""
+def search_for_videos(search_text):
+    collection.find({"$text": {"$search": search_text}}).limit(10)
+    collection.create_index([('your field', 'text')])
+"""
+
+"""
+client = pymongo.MongoClient()
+db = client['some_db']
+collection = db["some_collection"]
+
+collection.insert({"textfield": "cool stuff in a doc"})
+collection.create_index([('textfield', 'text')])
+
+search_this_string = "stuff"
+print collection.find({"$text": {"$search": search_this_string}}).count()
+"""
 
 
 if __name__ == '__main__':
