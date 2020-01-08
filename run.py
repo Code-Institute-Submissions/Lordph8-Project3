@@ -13,7 +13,7 @@ app.config["MONGO_URI"] = "mongodb+srv://root:Thisisarandompassword@myfirstclust
 
 mongo = PyMongo(app)
 
-@app.route("/") 
+@app.route("/", methods=["GET", "POST"]) 
 def index():
 
      return render_template("index.html")
@@ -26,7 +26,6 @@ def noresult():
 
 @app.route("/results", methods=["GET", "POST"])
 
-
 def results():
 
     collection = mongo.db.Recipes
@@ -34,14 +33,28 @@ def results():
         searching = request.form['search']
         if searching > "":
 
-            collection.create_index( { "$**": pymongo.TEXT } )
-                                                       
-            return render_template("results.html", search = collection.find({'$text' : {'$search' : searching }}))          
-            
+            test = 0
+
+            results = collection.find({"name": {"$regex": searching, "$options": "i"}})
+            for result in results:
+                if result != "":
+                    test = test + 1
+
+            if test != 0:
+
+                return render_template("results.html", scroll="results-scroll", search = collection.find({"name": {"$regex": searching, "$options": "i"}}))
+   
+            else:
+                return render_template("noresult.html")
+
         else:
             return render_template("noresult.html")
 
 """
+
+return render_template("results.html", search = collection.find({"ingredients": {"$regex": searching}}))
+
+
 def search_for_videos(search_text):
     collection.find({"$text": {"$search": search_text}}).limit(10)
     collection.create_index([('your field', 'text')])

@@ -62,9 +62,6 @@
           <h1 class="mx-auto my-0 text-uppercase">The Recipe</h1>
           <h2 class="text-white-50 mx-auto mt-2 mb-5">My Submition for the Data Centric Development Milestone Project.</h2>
           <a href="#search" class="btn btn-primary js-scroll-trigger">Get Started</a>
-          <br>
-          <br>
-          <a href="#results" class="btn btn-primary js-scroll-trigger" id="sendMessageButton">To Results</a> 
         </div>
       </div>
     </header>
@@ -74,9 +71,8 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h2 class="text-white mb-4">Search Recipie Database</h2>
-            <p class="text-white-50">Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on
-              <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
+            <h2 class="text-white mb-4">Search Recipe Database</h2>
+            <p class="text-white-50">Enter your search term here to search recipe titles (eg: Goulash).
               <form method= "POST" name="sentMessage" id="contactForm" novalidate action="{{ url_for('results') }}">
                 <div class="control-group">
                     <div class="form-group floating-label-form-group controls">
@@ -94,29 +90,52 @@
             </div>
           </div>
                
-          </div>
-        </div>
-      </div>
     </section>
 
         {% block content %}
         {% endblock %}
   
-      </div>
-    </section>
-  
       <!-- Insert Section -->
       <section id="insert" class="insert-section text-center">
         <div class="container">
-          <div class="row">
-            <div class="col-lg-8 mx-auto">
-              <h2 class="text-white mb-4">Insert Recipie into Database</h2>
-              <p class="text-white-50">Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on
-                <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
-                <a href="#results" class="btn btn-primary js-scroll-trigger">Get Results</a>  
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2 class="text-white mb-4">Search Recipie Database</h2>
+            <p class="text-white-50">Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on
+              <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
+              <form method= "POST" name="sentMessage" id="contactForm" novalidate action="{{ url_for('results') }}">
+                <div class="control-group">
+
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Recipe Name</label>
+                        <input type="name" class="form-control" id="name" placeholder="name">
+                    </div>
+                    
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Ingredients</label>
+                        <textarea type='ingredients' class="form-control" id="ingredients" rows="4" placeholder="Ingredients (Seperate Ingredients with a comma)"></textarea>
+                    </div>
+
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Instructions</label>
+                        <textarea type='instructions' class="form-control" id="instructions" rows="4" placeholder="Instructions"></textarea>
+                    </div>
+
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Picture Link</label>
+                        <input type="name" class="form-control" id="name" placeholder="Picture Link (eg. https://i.imgur.com/eTuCPxM.jpg)">
+                    </div>
+
+                    </form>    
+                    <div id="success"></div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary" id="sendMessageButton">Input Recipe</button>
+                        </div>
+                    </div>
+                </div>
+              </form>
             </div>
           </div>
-        </div>
       </section>
   
     <!-- Signup Section -->
