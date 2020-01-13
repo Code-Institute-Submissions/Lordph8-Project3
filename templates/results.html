@@ -2,15 +2,15 @@
 {% block content %}  
 
     <!-- Results Section -->
-    <section id="section" class="projects-section bg-light">
+    <section id="results" class="projects-section bg-light">
     
-      <div class="container results-scroll">
+      <div class="container">
 
        <!-- Result 1 -->
        {% for recipe in search %}
        {% if loop.index %2 != 0 %}
       <div class="row justify-content-center no-gutters">
-          <div class="col-lg-6">
+          <div class="col-lg-6 results-scroll">
             <div class="bg-black text-center h-100 project picture-center">
                 <img class="img-fluid" src="{{ recipe.image }}" alt="{{ recipe.name }}" />
             </div>
@@ -28,7 +28,9 @@
                   {% endfor %}
                   <br>
                   <h5 class="text-white">Directions</h5>
-                  <p class="mb-0 text-white-50">{{ recipe.directions }}</p>
+                  {% for direction in recipe.directions.split(".") %} 
+                  <p class="mb-0 text-white-50">{{ direction }}</p>
+                  {% endfor %}
                   <hr class="d-none d-lg-block mb-0 mc-0">
                 </div>
               </div>
@@ -51,22 +53,21 @@
                   <br>
                   <h5 class="text-white">Ingredients</h5>
                   {% for ingredient in recipe.ingredients.split(",") %} 
-                  <p class="mb-0 text-white-50">
-                  {{ ingredient }}</p>
+                  <p class="mb-0 text-white-50">{{ ingredient }}</p>
                   {% endfor %}
                   <br>
                   <h5 class="text-white">Directions</h5>
-                  <p class="mb-0 text-white-50">{{ recipe.directions }}</p>
+                  {% for direction in recipe.directions.split(".") %} 
+                  <p class="mb-0 text-white-50">{{ direction }}</p>
+                  {% endfor %}
                   <hr class="d-none d-lg-block mb-0 mc-0">
                 </div>
               </div>
             </div>
           </div>
         </div>
-    </div>
- </section>
-
- 
         {% endif %}
         {% endfor %}
+    </div>
+ </section>
 {% endblock %}  

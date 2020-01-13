@@ -60,7 +60,7 @@
       <div class="container d-flex h-100 align-items-center">
         <div class="mx-auto text-center">
           <h1 class="mx-auto my-0 text-uppercase">The Recipe</h1>
-          <h2 class="text-white-50 mx-auto mt-2 mb-5">My Submition for the Data Centric Development Milestone Project.</h2>
+          <h2 class="text-white-50 mx-auto mt-2 mb-5">My Submission for the Data Centric Development Milestone Project.</h2>
           <a href="#search" class="btn btn-primary js-scroll-trigger">Get Started</a>
         </div>
       </div>
@@ -73,17 +73,20 @@
           <div class="col-lg-8 mx-auto">
             <h2 class="text-white mb-4">Search Recipe Database</h2>
             <p class="text-white-50">Enter your search term here to search recipe titles (eg: Goulash).
-              <form method= "POST" name="sentMessage" id="contactForm" novalidate action="{{ url_for('results') }}">
+            <br>
+            Leave search field blank to load all recipes</p>
+            
+              <form method= "POST" name="searchForm" id="searchForm" novalidate action="{{ url_for('results') }}">
                 <div class="control-group">
                     <div class="form-group floating-label-form-group controls">
                         <label>Name</label>
-                        <input type="text" class="form-control" placeholder="search" name="search" id="search" required data-validation-required-message="Search">
+                        <input type="text" class="form-control" placeholder="Search" name="search" id="search" required data-validation-required-message="Search">
                         <p class="help-block text-danger"></p>
                     </div>
                 </div>    
                 <div id="success"></div>
                     <div class="form-group">
-                        <button href="#results" type="submit" class="btn btn-primary js-scroll-trigger" id="sendMessageButton">Load Results</button>
+                        <button href="#results" type="submit" class="btn btn-primary js-scroll-trigger" id="sendMessageButton">Load Recipe(s)</button>
                     </div>
                 </div>
               </form>
@@ -100,36 +103,36 @@
         <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h2 class="text-white mb-4">Search Recipie Database</h2>
-            <p class="text-white-50">Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on
-              <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
-              <form method= "POST" name="sentMessage" id="contactForm" novalidate action="{{ url_for('results') }}">
+            <h2 class="text-white mb-4">Insert Recipe into Database</h2>
+            <p class="text-white-50">Write in or copy and past recipe details into the textfields below and hit "Submit Recipe" to input it into the database.</p>
+              <form method= "POST" name="insertForm" id="insertForm" novalidate action="{{ url_for('insert') }}">
                 <div class="control-group">
 
                     <div class="form-group floating-label-form-group controls">
                         <label>Recipe Name</label>
-                        <input type="name" class="form-control" id="name" placeholder="name">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Insert Name" required data-validation-required-message="Name">
                     </div>
                     
                     <div class="form-group floating-label-form-group controls">
                         <label>Ingredients</label>
-                        <textarea type='ingredients' class="form-control" id="ingredients" rows="4" placeholder="Ingredients (Seperate Ingredients with a comma)"></textarea>
+                        <textarea type='text' class="form-control" name="ingredients" id="ingredients" rows="4" placeholder="Insert Ingredients (Seperate Ingredients with a comma)"></textarea>
                     </div>
 
                     <div class="form-group floating-label-form-group controls">
                         <label>Instructions</label>
-                        <textarea type='instructions' class="form-control" id="instructions" rows="4" placeholder="Instructions"></textarea>
+                        <textarea type='text' class="form-control" name="instructions" id="instructions" rows="4" placeholder="Insert Instructions"></textarea>
                     </div>
 
                     <div class="form-group floating-label-form-group controls">
                         <label>Picture Link</label>
-                        <input type="name" class="form-control" id="name" placeholder="Picture Link (eg. https://i.imgur.com/eTuCPxM.jpg)">
+                        <input type="text" class="form-control" name="picture" id="picture" placeholder="Insert Picture Link (eg. https://i.imgur.com/eTuCPxM.jpg)">
                     </div>
-
-                    </form>    
+  
                     <div id="success"></div>
+                    <br>
+                    <br>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary" id="sendMessageButton">Input Recipe</button>
+                            <button href="#insert" type="submit" class="btn btn-primary js-scroll-trigger" id="sendMessageButton">Submit Recipe</button>
                         </div>
                     </div>
                 </div>
@@ -200,13 +203,7 @@
         </div>
   
         <div class="social d-flex justify-content-center">
-          <a href="#" class="mx-2">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="#" class="mx-2">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="#" class="mx-2">
+          <a href="https://github.com/Lordph8/Project3" target="_blank" class="mx-2">
             <i class="fab fa-github"></i>
           </a>
         </div>
@@ -217,7 +214,7 @@
     <!-- Footer -->
     <footer class="bg-black small text-center text-white-50">
       <div class="container">
-        Copyright &copy; The Recepie 2019
+        Copyright &copy; The Recipe 2019
       </div>
     </footer>
   

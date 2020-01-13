@@ -42,35 +42,34 @@ def results():
 
             if test != 0:
 
-                return render_template("results.html", scroll="results-scroll", search = collection.find({"name": {"$regex": searching, "$options": "i"}}))
+                return render_template("results.html", search = collection.find({"name": {"$regex": searching, "$options": "i"}}))
    
             else:
                 return render_template("noresult.html")
 
+        if searching == "":
+            return render_template("results.html", search = collection.find())
+
         else:
             return render_template("noresult.html")
 
-"""
+@app.route("/insert", methods=["GET", "POST"])
 
-return render_template("results.html", search = collection.find({"ingredients": {"$regex": searching}}))
+def insert():
+    collection = mongo.db.Recipes
+    if request.method == 'POST':
+        name = request.form['name']
+        ingredients = request.form['ingredients']
+        instructions = request.form['instructions']
+        picture = request.form['picture']
+        if name > "" and ingredients > "" and instructions > "" and picture > "":
 
+            collection.insert({'name': name, 'ingredients': ingredients, 'directions': instructions, 'image': picture})
 
-def search_for_videos(search_text):
-    collection.find({"$text": {"$search": search_text}}).limit(10)
-    collection.create_index([('your field', 'text')])
-"""
-
-"""
-client = pymongo.MongoClient()
-db = client['some_db']
-collection = db["some_collection"]
-
-collection.insert({"textfield": "cool stuff in a doc"})
-collection.create_index([('textfield', 'text')])
-
-search_this_string = "stuff"
-print collection.find({"$text": {"$search": search_this_string}}).count()
-"""
+            return render_template("insert.html")
+    
+    return ('', 204)
+   
 
 
 if __name__ == '__main__':
@@ -78,27 +77,3 @@ if __name__ == '__main__':
             port = int(os.environ.get('PORT', '5000')),
             debug=True)
 
-"""
-@app.route("/", methods=["GET", "POST"])
-def index():
-
-    if request.method == 'POST':
-        search = request.form['search']
-        if request.method == 'POST':
-            return search_results(search)
-        return render_template('index.html', form=search)
-
-@app.route('/results')
-def search_results(search):
-    results = []
-    search_string = search.data['search']
-    if search.data['search'] == '':
-        qry = mongo.db.Recipesy(name)
-        results = qry.all()
-    if not results:
-        flash('No results found!')
-        return redirect('/')
-    else:
-        # display results
-        return render_template('results.html', results=results) 
-"""
