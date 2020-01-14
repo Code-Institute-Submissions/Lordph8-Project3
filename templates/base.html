@@ -110,7 +110,7 @@
 
                     <div class="form-group floating-label-form-group controls">
                         <label>Recipe Name</label>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Insert Name" required data-validation-required-message="Name">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Insert Recipe Name" required data-validation-required-message="Name">
                     </div>
                     
                     <div class="form-group floating-label-form-group controls">
@@ -125,7 +125,7 @@
 
                     <div class="form-group floating-label-form-group controls">
                         <label>Picture Link</label>
-                        <input type="text" class="form-control" name="picture" id="picture" placeholder="Insert Picture Link (eg. https://i.imgur.com/eTuCPxM.jpg)">
+                        <input type="url" class="form-control" name="picture" id="picture" placeholder="Insert Picture Link (eg. https://i.imgur.com/eTuCPxM.jpg)">
                     </div>
   
                     <div id="success"></div>
@@ -150,8 +150,8 @@
             <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
             <h2 class="text-white mb-5">Subscribe to receive updates!</h2>
   
-            <form class="form-inline d-flex">
-              <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter email address...">
+            <form class="form-inline d-flex" method= "POST" name="insertEmail" id="insertEmail" novalidate action="{{ url_for('email') }}">
+              <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" name="inputEmail" id="inputEmail" placeholder="Enter email address...">
               <button type="submit" class="btn btn-primary mx-auto">Subscribe</button>
             </form>
   

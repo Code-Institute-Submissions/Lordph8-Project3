@@ -1,10 +1,8 @@
 # MileStone Project 2
 The utilization of Flask, Pymongo, and MongoDB to create an recipe database off of a free Bootstrap Template.
 ## UX
-Something Simple and effective. Input (number of dice, type of dice, bonus, and options), output which shows images of the dice and the totals in a nice clean UI
-Link to wireframe = https://lordph8.github.io/Project2/wireframe.jpg
+Clean Webpage design. that allows easy navigation of commited recipes, as well as the ability to insert recipes. https://lordph8.github.io/Project2/wireframe.jpg
 ## Features
-Clean Webpage design.
 
 Database Recipe Title Search.
 

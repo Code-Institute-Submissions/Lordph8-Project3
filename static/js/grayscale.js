@@ -1,12 +1,16 @@
 (function($) {
   "use strict"; // Start of use strict
 
-  $(document).ready(function () {
-    // Handler for .ready() called.
-    $('html, body').animate({
-        scrollTop: $('.results-scroll').offset().top
-    }, 'slow');
-});
+  var divs = document.getElementsByClassName("results-scroll");
+   if (divs.length > 0) {
+
+    $(document).ready(function () {
+        // Handler for .ready() called.
+        $('html, body').animate({
+            scrollTop: $('.results-scroll').offset().top
+        }, 'slow');
+    });
+   }
 
   // Smooth scrolling using jQuery easing
   $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {

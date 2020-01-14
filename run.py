@@ -69,6 +69,21 @@ def insert():
             return render_template("insert.html")
     
     return ('', 204)
+
+@app.route("/email", methods=["GET", "POST"])
+
+def email():
+    collection = mongo.db.email
+    if request.method == 'POST':
+        email = request.form['inputEmail']
+       
+        if email > "":
+
+            collection.insert({'email': email})
+
+            return render_template("insertEmail.html")
+    
+    return ('', 204)
    
 
 

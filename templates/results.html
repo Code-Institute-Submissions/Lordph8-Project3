@@ -4,7 +4,11 @@
     <!-- Results Section -->
     <section id="results" class="projects-section bg-light">
     
-      <div class="container">
+    <div class="container">
+
+    <div class="form-group" id="topofresults">
+         <a href="#bottomofresults" class="js-scroll-trigger"><button type="submit" class="btn btn-primary" id="sendMessageButton">Bottom of Results</button></a>
+    </div>
 
        <!-- Result 1 -->
        {% for recipe in search %}
@@ -68,6 +72,12 @@
         </div>
         {% endif %}
         {% endfor %}
+
+        <div class="form-group" id="bottomofresults">
+        <br>
+            <a href="#topofresults" class="js-scroll-trigger"><button type="submit" class="btn btn-primary" id="sendMessageButton">Top of Results</button></a>
+        </div>
     </div>
+    
  </section>
 {% endblock %}  
