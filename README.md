@@ -1,7 +1,7 @@
 # MileStone Project 2
 The utilization of Flask, Pymongo, and MongoDB to create an recipe database off of a free Bootstrap Template.
 ## UX
-Clean Webpage design. that allows easy navigation of commited recipes, as well as the ability to insert recipes. https://lordph8.github.io/Project2/wireframe.jpg
+Clean Webpage design. that allows easy navigation of commited recipes, as well as the ability to insert recipes. https://github.com/Lordph8/Project3/blob/master/static/img/wireframe.jpg
 ## Features
 
 Database Recipe Title Search.
@@ -9,6 +9,9 @@ Database Recipe Title Search.
 Database Recipe Display.
 
 Database Recipe Insert.
+
+Database email add (different collection)
+
 ## Technologies Used
 #### HTML:
 Basic language used to create the website.
